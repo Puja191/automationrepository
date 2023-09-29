@@ -54,6 +54,12 @@ public class HomePage {
 	}
 	
 	//operational
+	
+	public void click_on_Time_Track_Module()
+	{
+		Time_Track_Module.click();	
+	}
+	
 	public void click_on_Task_Module()
 	{
 		Task_Module.click();

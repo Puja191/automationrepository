@@ -1,6 +1,7 @@
 package finalMock;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -16,7 +17,7 @@ import com.google.common.io.Files;
 
 public class MockScript {
 
-	public static void main(String[] args) {    
+	public static void main(String[] args) throws IOException {    
 	     
          WebDriver  driver=new ChromeDriver();
 		 
@@ -35,12 +36,11 @@ public class MockScript {
 		            
 		            jse.executeScript("window.scrollBy("+loc.getX()+ ","+ (loc.getY()-90)+ ") ") ;
 	     
-	    				TakesScreenshot src = (TakesScreenshot)driver;
-	    				
-	    				File file = src.getScreenshotAs(OutputType.FILE);
-	    				
-	    				File dest = new File("./Screenshots/ss1.png");
-	    				
-	    		    
+		            TakesScreenshot ts = (TakesScreenshot)driver;
+		    		
+		    		File src = ts.getScreenshotAs(OutputType.FILE);
+		    		File dest = new File("./Screenshots/ss1.png");
+		    		
+		    		Files.copy(src, dest);
 	}
 }
